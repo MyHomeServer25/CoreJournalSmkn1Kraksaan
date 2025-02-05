@@ -17,14 +17,23 @@
                             <div class="col-xl-6 col-12 ">
                                 <p style="font-weight:500" class="text-dark mb-2">Nama</p>
                                 <input type="text" class="form-control" id="name" name="name">
+                                @error('name')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="col-xl-6 col-12 ">
                                 <p style="font-weight:500" class="text-dark mb-2">email</p>
-                                <input type="email" class="form-control" id="name" name="email">
+                                <input type="email" class="form-control" id="email" name="email">
+                                @error('email')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="col-xl-12 mt-3 col-12 ">
                                 <p style="font-weight:500" class="text-dark mb-2">Password</p>
-                                <input type="password" class="form-control" id="name" name="password">
+                                <input type="password" class="form-control" id="password" name="password">
+                                @error('password')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                     </div>
@@ -62,14 +71,23 @@
                             <div class="col-xl-6 col-12 ">
                                 <p style="font-weight:500" class="text-dark mb-2">Nama</p>
                                 <input type="text" class="form-control" id="data-name" name="name">
+                                @error('name')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="col-xl-6 col-12 ">
                                 <p style="font-weight:500" class="text-dark mb-2">email</p>
                                 <input type="email" class="form-control" id="data-email" name="email">
+                                @error('email')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="col-xl-12 mt-3 col-12 ">
                                 <p style="font-weight:500" class="text-dark mb-2">Password</p>
                                 <input type="password" class="form-control" id="data-password" name="password">
+                                @error('password')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                     </div>
@@ -159,21 +177,25 @@
                         @endforelse
                     </tbody>
                 </table>
+                {{ $teachers->links() }}
             </div>
         </div>
     </div>
     @include('student.components.delete-modal-component')
 @endsection
 @section('script')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
-        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+    integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
     <script>
+        $(document).ready(function() {
+        // Fungsi untuk teacher management
         $('.btn-delete').on('click', function() {
             var id = $(this).data('id');
             $('#form-delete').attr('action', '/teacher/delete/' + id);
             $('#modal-delete').modal('show');
         });
+
         $('.btn-edit').click(function() {
             var id = $(this).data('id');
             var name = $(this).data('name');
@@ -181,7 +203,9 @@
             var password = $(this).data('password');
             $('#form-update').attr('action', '/teacher/update/' + id);
             $('#data-name').val(name);
+            $('#data-email').val(email); 
             $('#update-modal').modal('show');
         });
+    });
     </script>
 @endsection

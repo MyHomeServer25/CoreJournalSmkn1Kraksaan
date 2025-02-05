@@ -10,7 +10,7 @@
                     </a>
                 </div>
                 <div class="mt-4">
-                    <h6 style="font-weight:700; color:black">
+                    <h6 style="font-weight:700; color:black dark:text-white">
                         SMKN 1 KRAKSAAN
                     </h6>
                 </div>
@@ -37,7 +37,8 @@
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="{{ route('journal.monitoring') }}" aria-expanded="false">
                         <span>
-                            <i class="ti ti-aperture"></i>
+                            {{-- <i class="ti ti-aperture"></i> --}}
+                            <img src="{{ asset('news.png') }}" alt="jurnal" class="img-fluid" style="width: 25px; height: 25px;">
                         </span>
                         <span class="hide-menu">Jurnal</span>
                     </a>
@@ -45,7 +46,8 @@
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="{{ route('teacher.index') }}" aria-expanded="false">
                         <span>
-                            <i class="ti ti-aperture"></i>
+                            {{-- <i class="ti ti-aperture"></i> --}}
+                            <img src="{{ asset('teacher.png') }}" alt="teacher" class="img-fluid" style="width: 25px; height: 25px;">
                         </span>
                         <span class="hide-menu">Pembimbing</span>
                     </a>
@@ -53,9 +55,19 @@
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="{{ route('dudi.index') }}" aria-expanded="false">
                         <span>
-                            <i class="ti ti-aperture"></i>
+                            {{-- <i class="ti ti-aperture"></i> --}}
+                            <img src="{{ asset('technology.png') }}" alt="dudi" class="img-fluid" style="width: 25px; height: 25px;">
                         </span>
                         <span class="hide-menu">Dudi</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="{{ route('student.index') }}" aria-expanded="false">
+                        <span>
+                            {{-- <i class="ti ti-aperture"></i> --}}
+                            <img src="{{ asset('reading.png') }}" alt="student" class="img-fluid" style="width: 25px; height: 25px;">
+                        </span>
+                        <span class="hide-menu">Student</span>
                     </a>
                 </li>
 

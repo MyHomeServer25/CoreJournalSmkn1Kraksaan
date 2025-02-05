@@ -17,6 +17,9 @@
                             <div class=" col-12 ">
                                 <p style="font-weight:500" class="text-dark mb-2">Nama</p>
                                 <input type="text" class="form-control" id="name" name="name">
+                                @error('name')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                     </div>
@@ -54,6 +57,9 @@
                             <div class=" col-12 ">
                                 <p style="font-weight:500" class="text-dark mb-2">Nama</p>
                                 <input type="text" class="form-control" id="data-name" name="name">
+                                @error('name')
+                                    <div class="text-danger">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                     </div>
@@ -135,15 +141,16 @@
                         @endforelse
                     </tbody>
                 </table>
+                {{ $dudis->links() }}
             </div>
         </div>
     </div>
     @include('student.components.delete-modal-component')
 @endsection
 @section('script')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
         integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script> --}}
     <script>
         $('.btn-delete').on('click', function() {
             var id = $(this).data('id');

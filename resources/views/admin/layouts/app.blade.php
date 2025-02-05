@@ -23,6 +23,7 @@
 
     <!-- Core Css -->
     <link id="themeColors" rel="stylesheet" href="../../assets/dist/css/style.min.css" />
+    
 </head>
 
 <body>
@@ -45,6 +46,19 @@
         <!--  Sidebar End -->
         <!--  Main wrapper -->
         <div class="body-wrapper">
+            <div class="card-body">
+                @if (session('success'))
+                    <div class="alert alert-success alert-dismissible show fade">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        <strong>BERHASIL!!</strong> {{ session('success') }}
+                    </div>
+                @elseif(session('error'))
+                    <div class="alert alert-danger alert-dismissible show fade">
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        <strong>GAGAL!!</strong> {{ session('error') }}
+                    </div>
+                @endif
+            </div>
             <!--  Header Start -->
             @include('admin.layouts.header')
             <!--  Header End -->
@@ -360,7 +374,7 @@
                     </a>
                 </div>
             </div>
-            <div class="theme-direction pb-4">
+            {{-- <div class="theme-direction pb-4">
                 <h6 class="fw-semibold fs-4 mb-1">Theme Direction</h6>
                 <div class="d-flex align-items-center gap-3 my-3">
                     <a href="index-2.html"
@@ -374,7 +388,7 @@
                         <span class="text-dark">RTL</span>
                     </a>
                 </div>
-            </div>
+            </div> --}}
             <div class="theme-colors pb-4">
                 <h6 class="fw-semibold fs-4 mb-1">Theme Colors</h6>
                 <div class="d-flex align-items-center gap-3 my-3">
@@ -427,12 +441,12 @@
                                 class="rounded-circle position-relative d-block customizer-bgcolor skin6-orangetheme-primary"
                                 onclick="toggleTheme('../../assets/dist/css/style-orange.min.css')"
                                 data-bs-toggle="tooltip" data-bs-placement="top" data-bs-title="ORANGE_THEME"><i
-                                    class="ti ti-check  text-white d-flex align-items-center justify-content-center fs-5"></i></a>
+                                class="ti ti-check  text-white d-flex align-items-center justify-content-center fs-5"></i></a>
                         </li>
                     </ul>
                 </div>
             </div>
-            <div class="layout-type pb-4">
+            {{-- <div class="layout-type pb-4">
                 <h6 class="fw-semibold fs-4 mb-1">Layout Type</h6>
                 <div class="d-flex align-items-center gap-3 my-3">
                     <a href="index-2.html"
@@ -446,7 +460,7 @@
                         <span class="text-dark">Horizontal</span>
                     </a>
                 </div>
-            </div>
+            </div> --}}
             <div class="container-option pb-4">
                 <h6 class="fw-semibold fs-4 mb-1">Container Option</h6>
                 <div class="d-flex align-items-center gap-3 my-3">
@@ -462,7 +476,7 @@
                     </a>
                 </div>
             </div>
-            <div class="sidebar-type pb-4">
+            {{-- <div class="sidebar-type pb-4">
                 <h6 class="fw-semibold fs-4 mb-1">Sidebar Type</h6>
                 <div class="d-flex align-items-center gap-3 my-3">
                     <a href="javascript:void(0)"
@@ -476,7 +490,7 @@
                         <span class="text-dark">Collapse</span>
                     </a>
                 </div>
-            </div>
+            </div> --}}
             <div class="card-with pb-4">
                 <h6 class="fw-semibold fs-4 mb-1">Card With</h6>
                 <div class="d-flex align-items-center gap-3 my-3">
@@ -508,7 +522,7 @@
     <script src="../../assets/dist/js/custom.js"></script>
     <!--  current page js files -->
     <script src="../../assets/dist/libs/owl.carousel/dist/owl.carousel.min.js"></script>
-    <script src="../../assets/dist/libs/apexcharts/dist/apexcharts.min.js"></script>
+    {{-- <script src="../../assets/dist/libs/apexcharts/dist/apexcharts.min.js"></script> --}}
     <script src="../../assets/dist/js/dashboard.js"></script>
     @yield('script')
 </body>

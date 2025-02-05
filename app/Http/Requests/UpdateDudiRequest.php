@@ -25,4 +25,11 @@ class UpdateDudiRequest extends FormRequest
             'name' => 'required'
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'nama dudi harus di isi'
+        ];
+    }
 }

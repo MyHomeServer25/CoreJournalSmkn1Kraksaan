@@ -14,9 +14,12 @@ return new class extends Migration
         Schema::create('students', function (Blueprint $table) {
             $table->id();
             $table->foreignId('users_id')->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('teachers_id')->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
-            $table->foreignId('dudis_id')->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
+            $table->foreignId('teachers_id')->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate()->change();
+            $table->foreignId('dudis_id')->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate()->change();
+            $table->string('nisn', 10)->unique();
             $table->string('name');
+            $table->enum('status', ['pending', 'approved', 'rejected'])->nullable();
+            $table->text('reject_reason')->nullable();
             $table->timestamps();
         });
     }

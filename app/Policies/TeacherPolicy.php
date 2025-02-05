@@ -2,8 +2,10 @@
 
 namespace App\Policies;
 
-use App\Models\Teacher;
 use App\Models\User;
+use App\Models\Journal;
+use App\Models\Student;
+use App\Models\Teacher;
 use Illuminate\Auth\Access\Response;
 
 class TeacherPolicy
@@ -19,7 +21,12 @@ class TeacherPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Teacher $teacher): bool
+    public function view(User $user, Teacher $teacher, Journal $journal): bool
+    {
+        //
+    }
+
+    public function viewStudent(User $user, Student $student): bool
     {
         //
     }

@@ -13,7 +13,7 @@ class JournalPolicy
      */
     public function viewAny(User $user): bool
     {
-        //
+        // return $user->role === 'admin';
     }
 
     /**
@@ -21,7 +21,7 @@ class JournalPolicy
      */
     public function view(User $user, Journal $journal): bool
     {
-        //
+        // 
     }
 
     /**
@@ -37,7 +37,7 @@ class JournalPolicy
      */
     public function update(User $user, Journal $journal): bool
     {
-        //
+        // 
     }
 
     /**
@@ -45,7 +45,7 @@ class JournalPolicy
      */
     public function delete(User $user, Journal $journal): bool
     {
-        //
+        // 
     }
 
     /**

@@ -16,10 +16,10 @@
                                 <h6 class="fs-4 fw-semibold mb-0">Tanggal</h6>
                             </th>
                             <th>
-                                <h6 class="fs-4 fw-semibold mb-0">Jenis kegiatan/Pekerjaan</h6>
+                                <h6 class="fs-4 fw-semibold mb-0">Unit Pekerjaan</h6>
                             </th>
                             <th>
-                                <h6 class="fs-4 fw-semibold mb-0">Nilai-nilai karakter budaya Industri</h6>
+                                <h6 class="fs-4 fw-semibold mb-0">Description</h6>
                             </th>
 
                         </tr>
@@ -35,12 +35,12 @@
                             </td>
                             <td>
                                 <p class="mb-0 fw-normal fs-4">
-                                    {{ strlen($journal->description) > 40 ? substr($journal->description, 0, 40) . '...' : $journal->description }}
+                                    {{ strlen($journal->name) > 40 ? substr($journal->name, 0, 40) . '...' : $journal->name }}
                                   </p>
                             </td>
                             <td>
                                 <p class="mb-0 fw-normal fs-4">
-                                    {{ strlen($journal->character_values) > 40 ? substr($journal->character_values, 0, 40) . '...' : $journal->character_values }}
+                                    {{ strlen($journal->description) > 40 ? substr($journal->description, 0, 40) . '...' : $journal->description }}
                                   </p>
                             </td>
                         </tr>
@@ -53,6 +53,7 @@
                     @endforelse
                     </tbody>
                 </table>
+                {{ $journals->links() }}
             </div>
         </div>
     </div>

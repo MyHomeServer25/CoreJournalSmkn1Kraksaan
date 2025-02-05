@@ -22,7 +22,20 @@ class UpdateTeacherRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required',
+            'name' => 'required|string',
+            'email' => 'required|email',
+            'password' => 'required|min:8'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'nama harus di isi',
+            'email.required' => 'email harus di isi',
+            'email.email' => 'email harus valid',
+            'password.required' => 'password harus di isi',
+            'password.min' => 'password minimal 8 huruf'
         ];
     }
 }

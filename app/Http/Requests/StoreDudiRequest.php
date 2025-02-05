@@ -22,7 +22,15 @@ class StoreDudiRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required'
+            'name' => 'required|string'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'name.required' => 'Judul dudi wajib diisi.',
+            'name.string' => 'Judul dudi harus berupa teks.',
         ];
     }
 }

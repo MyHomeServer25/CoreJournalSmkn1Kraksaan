@@ -11,7 +11,7 @@ class UpdateStudentRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,19 @@ class UpdateStudentRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name' => 'string|min:10',
+            'email' => 'email',
+            'password' => 'min:8'
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'name.string' => 'name tidak boleh mengandung angka',
+            'name.min:' => 'panjang nama minimal 10 huruf',
+            'email.email' => 'harus berupa email',
+            'password.min:' => 'password minimal 8 huruf' 
         ];
     }
 }

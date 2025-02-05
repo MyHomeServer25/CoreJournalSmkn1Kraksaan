@@ -16,9 +16,20 @@ class TeacherController extends Controller
      */
     public function index()
     {
-        $teachers = Teacher::all();
-        return view('admin.teacher.index', compact('teachers'));
+        try {
+            $teachers = Teacher::latest()->paginate(10);
+            $guru = Teacher::all();
+            return view('admin.teacher.index', compact('teachers', 'guru'));
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Gagal menampilkan data guru');
+        }
     }
+
+    // public function showall()
+    // {
+    //     $guru = Teacher::all();
+    //     return view('admin.teacher.index', compact('guru'));
+    // }
 
     /**
      * Show the form for creating a new resource.
@@ -33,17 +44,23 @@ class TeacherController extends Controller
      */
     public function store(StoreTeacherRequest $request)
     {
-       $users = User::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => $request->password,
-            'role' => 'teacher',
-        ]);
-        Teacher::create([
-            'name' => $request->name,
-            'users_id' => $users->id
-        ]);
-        return redirect()->route('teacher.index')->with('success', 'Data berhasil ditambahkan');
+        try {
+            $users = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => $request->password,
+                'role' => 'teacher',
+            ]);
+
+            Teacher::create([
+                'name' => $request->name,
+                'users_id' => $users->id
+            ]);
+
+            return redirect()->route('teacher.index')->with('success', 'Data berhasil ditambahkan');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Gagal menambahkan data guru, periksa kembali halaman create');
+        }
     }
 
     /**
@@ -67,19 +84,25 @@ class TeacherController extends Controller
      */
     public function update(UpdateTeacherRequest $request, Teacher $teacher)
     {
-        $teacher->update($request->all());
-        $users = User::where('id' , $teacher->users_id)->first();
-        $users->update($request->all());
-        return redirect()->route('teacher.index')->with('success', 'Data berhasil diubah');
+        try {
+            $teacher->update($request->all());
+            $users = User::where('id', $teacher->users_id)->first();
+            $users->update($request->all());
+            
+            return redirect()->route('teacher.index')->with('success', 'Data berhasil diubah');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Gagal mengubah data guru, periksa kembali halaman update');
+        }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
     public function destroy(Teacher $teacher)
     {
-        $teacher->delete();
-        return redirect()->route('teacher.index')->with('success', 'Data berhasil dihapus');
+        try {
+            $teacher->delete();
+            return redirect()->route('teacher.index')->with('success', 'Data berhasil dihapus');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Gagal menghapus data guru');
+        }
     }
 
     public function mentor()

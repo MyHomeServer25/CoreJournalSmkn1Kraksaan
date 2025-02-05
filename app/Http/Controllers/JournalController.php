@@ -23,7 +23,7 @@ class JournalController extends Controller
 
     public function monitoring()
     {
-        $journals = Journal::all();
+        $journals = Journal::latest()->paginate(10);
         return view('admin.journal.index' ,compact('journals'));
     }
 

@@ -16,8 +16,8 @@ return new class extends Migration
             $table->foreignId('users_id')->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->foreignId('teachers_id')->nullable()->constrained()->cascadeOnDelete()->cascadeOnUpdate();
             $table->date('date');
+            $table->text('name');
             $table->text('description');
-            $table->text('character_values');
             $table->timestamps();
         });
     }

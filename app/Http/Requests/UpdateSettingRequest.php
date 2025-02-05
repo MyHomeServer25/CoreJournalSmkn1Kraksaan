@@ -19,11 +19,21 @@ class UpdateSettingRequest extends FormRequest
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
-    public function rules(): array
+    public function rules()
     {
         return [
-            'dudis_id' => 'required',
-            'teachers_id' => 'required'
+            'teachers_id' => 'required|exists:teachers,id',
+            'dudis_id' => 'required|exists:dudis,id',
+        ];
+    }
+
+    public function messages()
+    {
+        return [
+            'teachers_id.required' => 'Guru pembimbing wajib diisi.',
+            'teachers_id.exists' => 'Guru pembimbing tidak ditemukan.',
+            'dudis_id.required' => 'Tempat PKL wajib diisi.',
+            'dudis_id.exists' => 'Tempat PKL tidak ditemukan.',
         ];
     }
 }

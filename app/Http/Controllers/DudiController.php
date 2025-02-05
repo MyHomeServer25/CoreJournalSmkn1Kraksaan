@@ -13,7 +13,7 @@ class DudiController extends Controller
      */
     public function index()
     {
-        $dudis = Dudi::all();
+        $dudis = Dudi::latest()->paginate(10);
         return view('admin.dudi.index', compact('dudis'));
     }
 
@@ -30,8 +30,12 @@ class DudiController extends Controller
      */
     public function store(StoreDudiRequest $request)
     {
-        Dudi::create($request->all());
-        return redirect()->back()->with('success', 'Data berhasil ditambahkan');
+        try {
+            Dudi::create($request->all());
+            return redirect()->back()->with('success', 'Data berhasil ditambahkan');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Gagal menambahkan data DUDI, harap periksa kembali halaman create');
+        }
     }
 
     /**
@@ -55,8 +59,12 @@ class DudiController extends Controller
      */
     public function update(UpdateDudiRequest $request, Dudi $dudi)
     {
-        $dudi->update($request->all());
-        return redirect()->back()->with('success', 'Data berhasil diubah');
+        try {
+            $dudi->update($request->all());
+            return redirect()->back()->with('success', 'Data berhasil diubah');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Gagal mengubah data DUDI, periksa kembali halaman update');
+        }
     }
 
     /**
@@ -64,7 +72,11 @@ class DudiController extends Controller
      */
     public function destroy(Dudi $dudi)
     {
-        $dudi->delete();
-        return redirect()->back()->with('success', 'Data berhasil dihapus');
+        try {
+            $dudi->delete();
+            return redirect()->back()->with('success', 'Data berhasil dihapus');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Gagal menghapus data DUDI');
+        }
     }
 }

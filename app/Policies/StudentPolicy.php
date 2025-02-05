@@ -37,7 +37,7 @@ class StudentPolicy
      */
     public function update(User $user, Student $student): bool
     {
-        //
+        // return $user->id === $student->users_id && $user->role === 'student';
     }
 
     /**
@@ -45,7 +45,17 @@ class StudentPolicy
      */
     public function delete(User $user, Student $student): bool
     {
-        //
+        // return $user->id === $student->users_id && $user->role === 'student';
+    }
+
+    public function Getbyname(User $user, Student $student): bool
+    {
+        // 
+    }
+
+    public function Import(User $user, Student $student): bool
+    {
+        // 
     }
 
     /**
