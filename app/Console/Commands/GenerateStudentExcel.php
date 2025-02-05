@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Storage;
 
 class GenerateStudentExcel extends Command
 {
-    protected $signature = 'generate:student-excel {count=25}';
+    protected $signature = 'generate:student-excel {count=4}';
     protected $description = 'Generate a large Excel file with fake student data for testing import';
 
     public function handle()

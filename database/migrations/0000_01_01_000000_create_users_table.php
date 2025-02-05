@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('email');
             $table->enum('role' , [RoleEnum::ADMIN->value , RoleEnum::STUDENT->value , RoleEnum::TEACHER->value , RoleEnum::DUDI->value]);
-            $table->timestamp('email_verified_at');
+            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

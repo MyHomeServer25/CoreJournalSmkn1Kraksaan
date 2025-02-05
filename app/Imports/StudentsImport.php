@@ -28,6 +28,7 @@ class StudentsImport implements ToCollection, WithHeadingRow
                 $user = User::create([
                     'name'     => $data->name,
                     'email'    => $data->email,
+                    'email_verified_at' => null,
                     'password' => Hash::make($data->password),
                     'role'     => RoleEnum::STUDENT->value,
                 ]);

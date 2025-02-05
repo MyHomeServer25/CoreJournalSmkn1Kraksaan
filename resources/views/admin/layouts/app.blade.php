@@ -23,6 +23,15 @@
 
     <!-- Core Css -->
     <link id="themeColors" rel="stylesheet" href="../../assets/dist/css/style.min.css" />
+
+    <style>
+        /* Hanya tampilkan dropdown di layar desktop dan sembunyikan di layar kecil */
+        @media (max-width: 768px) {
+        .dropdown-menu {
+            width: 100%;
+        }
+        }
+      </style>    
     
 </head>
 

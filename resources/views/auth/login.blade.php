@@ -113,7 +113,7 @@
                                             <button type="submit" class="btn btn-primary w-100">
                                                 {{ __('Login') }}
                                             </button>
-                                            <div class="d-flex justify-content-between gap-2 mt-2">
+                                            {{-- <div class="d-flex justify-content-between gap-2 mt-2">
                                                 <div class="">
                                                     <p>
                                                         Belum mempunyai akun ?
@@ -125,7 +125,7 @@
                                                         {{ __('Register') }}
                                                     </a>
                                                 </div>
-                                            </div>
+                                            </div> --}}
 
                                         </div>
                                     </div>

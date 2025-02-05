@@ -144,12 +144,24 @@
                             Data Siswa
                         </h4>
                     </div>
-                    <div class="">
+                    <div class="d-none d-sm-block">
                         <button class="btn me-1 mb-1 btn-light-primary text-primary btn-lg px-4 fs-4 font-medium"
                             data-bs-toggle="modal" data-bs-target="#bs-example-modal-md">
                             Import Data Siswa 
                         </button>
+                        <a href="{{ asset('template_import_data_siswa.xlsx') }}" class="btn mb-1 btn-light-primary text-primary btn-lg px-4 fs-4 font-medium" download>Unduh Template</a>
                     </div>
+
+                        <!-- Dropdown Button (Only for small screens) -->
+                        <div class="dropdown d-block d-sm-none">
+                          <button class="btn btn-primary dropdown-toggle w-100" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                            Menu
+                          </button>
+                          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li><button class="dropdown-item" type="button" data-bs-toggle="modal" data-bs-target="#bs-example-modal-md">Tambah Data</button></li>
+                            <li><button class="dropdown-item" type="button"><a href="{{ asset('template_import_data_siswa.xlsx') }}" download>Download Template</a></button></li>
+                          </ul>
+                        </div>
                 </div>
                 <div class="mb-3">
                     <label for="search-student" class="form-label fw-semibold">Cari Siswa</label>
