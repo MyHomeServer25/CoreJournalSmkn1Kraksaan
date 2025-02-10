@@ -65,7 +65,7 @@ class StoreJournalRequest extends FormRequest
                     }
                 },
             ],
-            'name' => 'required|string',
+            'name' => 'required|string|max:255',
             'description' => 'required|string',
         ];
     }
@@ -77,6 +77,7 @@ class StoreJournalRequest extends FormRequest
             'date.required' => 'Kolom date harus diisi',
             'name.required' => 'Kolom nilai karakter harus diisi.',
             'name.string' => 'Kolom nilai karakter harus berupa string.',
+            'name.max' => 'Panjang Unit pekerjaan maksimal 255 karakter',
             'description.required' => 'Kolom deskripsi harus diisi.',
             'description.string' => 'Kolom deskripsi harus berupa string.'
         ];

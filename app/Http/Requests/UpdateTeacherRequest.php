@@ -22,8 +22,8 @@ class UpdateTeacherRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string',
-            'email' => 'required|email',
+            'name' => 'required|string|max:255|regex:/^[\pL\s\d]+$/u',
+            'email' => 'required|email|max:255',
             'password' => 'required|min:8'
         ];
     }
@@ -35,7 +35,10 @@ class UpdateTeacherRequest extends FormRequest
             'email.required' => 'email harus di isi',
             'email.email' => 'email harus valid',
             'password.required' => 'password harus di isi',
-            'password.min' => 'password minimal 8 huruf'
+            'password.min' => 'password minimal 8 huruf',
+            'name.regex' => 'Nama hanya boleh berisi huruf, spasi, dan angka',
+            'email.unique' => 'email sudah digunakan',
+            'password.confirmed' => 'password harus sama dengan konfirmasi password'
         ];
     }
 }

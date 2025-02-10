@@ -76,7 +76,7 @@ class UpdateJournalRequest extends FormRequest
             //         }
             //     }
             // ],
-            'name' => 'required|string',
+            'name' => 'required|string|max:255',
             'description' => 'required|string',
         ];
     }
@@ -90,6 +90,7 @@ class UpdateJournalRequest extends FormRequest
             'description.required' => 'Kolom deskripsi harus diisi',
             'description.string' => 'Kolom deskripsi harus berupa string',
             'name.string' => 'Kolom description harus berupa string',
+            'name.max' => 'unit pekerjaan maksimal 255 karakter'
         ];
     }
 }

@@ -166,7 +166,7 @@
                 <div class="mb-3">
                     <label for="search-student" class="form-label fw-semibold">Cari Siswa</label>
                     <div class="input-group">
-                        <input type="text" id="search-student" class="form-control" placeholder="Cari siswa berdasarkan email..." autofocus>
+                        <input type="text" id="search-student" class="form-control" placeholder="Cari siswa berdasarkan nama..." autofocus>
                         <span class="input-group-text">
                             <i class="fas fa-search"></i>
                         </span>

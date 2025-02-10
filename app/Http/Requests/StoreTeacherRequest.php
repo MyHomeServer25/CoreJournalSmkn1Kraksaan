@@ -22,9 +22,23 @@ class StoreTeacherRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required',
-            'password' => 'required',
-            'email' => 'required'
+            'name' => 'required|max:255|regex:/^[\pL\s\d]+$/u',
+            'password' => 'required|min:8',
+            'email' => 'required|email|max:255'
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'name.required' => 'Nama harus diisi',
+            'name.max' => 'Panjang nama maksimal 255 karakter',
+            'name.regex' => 'Nama hanya boleh berisi huruf, spasi, dan angka',
+            'password.required' => 'Password harus diisi',
+            'password.min' => 'Password minimal 8 karakter',
+            'email.required' => 'Email harus diisi',
+            'email.email' => 'Format email salah',
+            'email.max' => 'Panjang email maksimal 255 karakter'
         ];
     }
 }

@@ -22,14 +22,17 @@ class UpdateDudiRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required'
+            'name' => 'required|string|max:255|regex:/^[\pL\s\d]+$/u'
         ];
     }
 
     public function messages()
     {
         return [
-            'name.required' => 'nama dudi harus di isi'
+            'name.required' => 'nama dudi harus di isi',
+            'name.string' => 'Judul dudi harus berupa teks.',
+            'name.max'      => 'Nama perusahaan tidak boleh lebih dari 255 karakter.',
+            'name.regex'    => 'Nama perusahaan hanya boleh berisi huruf, angka, dan spasi.',
         ];
     }
 }

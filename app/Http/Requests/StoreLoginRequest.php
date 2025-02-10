@@ -22,8 +22,21 @@ class StoreLoginRequest extends FormRequest
     public function rules(): array
     {
         return [
-            "email" => "required|string|email",
-            "password" => "required",
+            "email" => "required|string|email|max:255|regex:/^[\pL\s\d@\.\-_]+$/u",
+            "password" => "required|min:8",
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            "email.required" => "Email harus diisi",
+            "email.string" => "Email harus berupa string",
+            "email.email" => "Email harus valid",
+            "email.max" => "Email maksimal 255 karakter",
+            "email.regex" => "Nama hanya boleh berisi huruf, angka, spasi, @, ., -, dan _.",
+            "password.required" => "Password harus diisi",
+            "password.min" => "Password minimal 8 karakter",
         ];
     }
 }

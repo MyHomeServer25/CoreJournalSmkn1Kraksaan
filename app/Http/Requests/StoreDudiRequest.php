@@ -22,7 +22,7 @@ class StoreDudiRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'name' => 'required|string'
+            'name' => 'required|string|max:255|regex:/^[\pL\s\d]+$/u'
         ];
     }
 
@@ -31,6 +31,8 @@ class StoreDudiRequest extends FormRequest
         return [
             'name.required' => 'Judul dudi wajib diisi.',
             'name.string' => 'Judul dudi harus berupa teks.',
+            'name.max'      => 'Nama perusahaan tidak boleh lebih dari 255 karakter.',
+            'name.regex'    => 'Nama perusahaan hanya boleh berisi huruf, angka, dan spasi.',
         ];
     }
 }
