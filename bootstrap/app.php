@@ -16,20 +16,13 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware) {
-        // $middleware->group('api', [
-        //     \App\Http\Middleware\RateLimitMiddleware::class,
-        //     \App\Http\Middleware\SecurityHeadersMiddleware::class,
-        // ]);
-        // Middleware grup
-        //  $middleware->group('api', [
-        //     \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
-        //     'throttle:api',
-        //     \Illuminate\Routing\Middleware\SubstituteBindings::class,
-        // ]);
+        // $middleware->append(\Illuminate\Http\Middleware\HandleCors::class);
+        $middleware->append(\App\Http\Middleware\Cors::class);
 
         // Middleware alias - format sebagai array
         $middleware->alias([
             'role' => \App\Http\Middleware\RoleMiddleware::class,
+            'cors' => \Illuminate\Http\Middleware\HandleCors::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

@@ -24,10 +24,12 @@ Route::get('/', function () {
 //     return $request->user();
 // })->middleware('auth:sanctum');
 
-Route::post('/register', RegisterController::class)->name('register');
-Route::post('/login', LoginController::class)->name('login');
+Route::middleware(['cors'])->group(function () {
+    Route::post('/register', RegisterController::class)->name('register');
+    Route::post('/login', LoginController::class)->name('login');
+});
 
-Route::middleware(['auth:api', 'throttle:api'])->group(function () {
+Route::middleware(['auth:api', 'throttle:api', 'cors'])->group(function () {
     Route::group(['middleware' => ['role:student']], function() {
 
         // Route api jurnal
@@ -83,6 +85,8 @@ Route::middleware(['auth:api', 'throttle:api'])->group(function () {
     // Route::apiResource('/student', StudentController::class);
 });
 
-Route::post('/forgot-password', [ResetPasswordController::class, 'resetPassword']);
-Route::post('/logout', App\Http\Controllers\Api\Auth\LogoutController::class)->name('logout');
+Route::middleware(['cors'])->group(function () {
+    Route::post('/forgot-password', [ResetPasswordController::class, 'resetPassword']);
+    Route::post('/logout', App\Http\Controllers\Api\Auth\LogoutController::class)->name('logout');
+});
 

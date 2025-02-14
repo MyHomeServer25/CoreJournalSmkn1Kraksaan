@@ -81,7 +81,7 @@
                                 <div class="d-grid py-4 px-7 pt-8">
                                     <a class="btn btn-outline-primary" href="{{ route('logout') }}"
                                         onclick="event.preventDefault();
-                    document.getElementById('logout-form').submit();">
+                                        document.getElementById('logout-form').submit();">
                                         <i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i>
                                         {{ __('Logout') }}
                                     </a>
