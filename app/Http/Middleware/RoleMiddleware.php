@@ -17,8 +17,18 @@ class RoleMiddleware
     {
         $user = auth()->user();
         if (!$user || $user->role !== $role) {
-            return response()->json([
-                'message' => 'acces denied',
+            // return response()->json([
+            //     'message' => 'acces denied',
+            // ], 403);
+            if ($request->is('api/*') || $request->expectsJson()) {
+                return response()->json([
+                    'message' => 'Access denied',
+                ], 403);
+            }
+            
+            // Untuk web request, redirect ke view error
+            return response()->view('errors.403', [
+                'message' => 'Access denied'
             ], 403);
         }
         return $next($request);

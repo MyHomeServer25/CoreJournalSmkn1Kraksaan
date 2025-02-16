@@ -7,6 +7,8 @@ use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
 use Illuminate\Routing\Middleware\ThrottleRequests;
 use Illuminate\Http\Exceptions\ThrottleRequestsException;
+use Symfony\Component\HttpKernel\Exception\HttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 return Application::configure(basePath: dirname(__DIR__))
     ->withRouting(
@@ -33,4 +35,30 @@ return Application::configure(basePath: dirname(__DIR__))
         //         ], Response::HTTP_TOO_MANY_REQUESTS);
         //     }
         // });
+        $exceptions->render(function (NotFoundHttpException $e, Request $request) {
+            $status = $e->getStatusCode();
+            $messages = [
+                400 => 'Bad Request.',
+                401 => 'Unauthorized.',
+                403 => 'Forbidden.',
+                404 => 'Record not found.',
+                405 => 'Method Not Allowed.',
+                500 => 'Internal Server Error.',
+            ];
+            
+            $message = $messages[$status] ?? 'An error occurred.';
+            
+            // Only return JSON if it's explicitly an API route or JSON is expected
+            if ($request->is('api/*') || ($request->expectsJson() && $request->ajax())) {
+                return response()->json([
+                    'message' => $message
+                ], $status);
+            }
+            
+            // For web routes, return view
+            return response()->view("errors.$status", [
+                'message' => $message
+            ], $status);
+        });   
+        
     })->create();
