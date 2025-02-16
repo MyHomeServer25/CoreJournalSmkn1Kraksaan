@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@yield('title')</title>
+    <link rel="shortcut icon" type="image/png"
+        href="{{ asset('smk.png') }}" />
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('assets/dist/css/error.css') }}">
 </head>
@@ -14,8 +16,7 @@
         <div class="error">
             <h1>500</h1>
             <h2>error</h2>
-            <p>Ruh-roh, something just isn't right... Time to paw through your logs and get down and dirty in your
-                stack-trace;)</p>
+            <p>Oops! Something went wrong on our server. Please try again later;)</p>
         </div>
         <div class="stack-container">
             <div class="card-container">

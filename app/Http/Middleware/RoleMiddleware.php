@@ -22,14 +22,12 @@ class RoleMiddleware
             // ], 403);
             if ($request->is('api/*') || $request->expectsJson()) {
                 return response()->json([
-                    'message' => 'Access denied',
+                    'message' => 'Access Denied. Please sign in to continue',
                 ], 403);
             }
             
-            // Untuk web request, redirect ke view error
-            return response()->view('errors.403', [
-                'message' => 'Access denied'
-            ], 403);
+            // Untuk web request, gunakan abort untuk memicu exception handler
+            abort(403, 'Access Denied. Please sign in to continue');
         }
         return $next($request);
     }

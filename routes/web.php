@@ -39,7 +39,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('/student', [StudentController::class, 'index'])->name('student.index');
     });
 
-    Route::group(['middleware' => ['role:student']], function() {
+    // Route::group(['middleware' => ['role:student']], function() {
         // Journal student
         // Route::get('/journal', [JournalController::class, 'index'])->name('journal.index');
         // Route::post('/journal/store', [JournalController::class, 'store'])->name('journal.store');
@@ -49,12 +49,12 @@ Route::middleware(['auth'])->group(function () {
         // // Settings (Student)
         // Route::get('/settings', [SetttingController::class, 'index'])->name('setting.index');
         // Route::put('/update/setting/{student}', [SetttingController::class, 'update'])->name('update.setting');
-    });
+    // });
 
-    Route::group(['middleware' => ['role:teacher']], function() {
+    // Route::group(['middleware' => ['role:teacher']], function() {
     //     Route::get('/mentor', [TeacherController::class, 'mentor'])->name('mentor.index');
     //     Route::get('/mentor/journal', [TeacherController::class, 'journal'])->name('mentor.journal.index');
     //     Route::get('/mentor/student', [TeacherController::class, 'student'])->name('mentor.student.index');
     //     Route::get('/detail/student/{student}', [TeacherController::class, 'detailStudent'])->name('detail.student');
-    });
+    // });
 });    
