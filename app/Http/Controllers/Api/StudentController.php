@@ -7,6 +7,7 @@ use App\Models\Student;
 use Illuminate\Http\Request;
 use App\Imports\StudentsImport;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Requests\StoreStudentRequest;
 use App\Http\Requests\ImportStudentRequest;
@@ -25,7 +26,17 @@ class StudentController extends Controller
           'message' => "data student berhasil di tampilkan",
           'data' => $students
         ], 200);
-        }
+    }
+
+    public function getByUser(Request $request)
+    {
+        $students = Student::where('users_id', Auth::id())->get();
+        return response()->json([
+          'status' => true,
+          'message' => "data student berhasil di tampilkan",
+          'data' => $students
+        ], 200);
+    }
 
     /**
      * Show the form for creating a new resource.

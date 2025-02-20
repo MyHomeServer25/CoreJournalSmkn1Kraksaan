@@ -46,6 +46,9 @@ Route::middleware(['auth:api', 'throttle:api', 'cors'])->group(function () {
         // Route student update and delete account
         Route::put('/student/{student}', [StudentController::class, 'update'])->name('student.update');
         Route::delete('/student/{student}', [StudentController::class, 'destroy'])->name('student.destroy');
+
+        // Route show student by auth
+        Route::get('/student_auth', [StudentController::class, 'getByUser'])->name('student.getByUser');
     });
     
     

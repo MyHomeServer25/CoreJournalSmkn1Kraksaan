@@ -76,8 +76,8 @@ class UpdateJournalRequest extends FormRequest
             //         }
             //     }
             // ],
-            'name' => 'required|string|max:255',
-            'description' => 'required|string',
+            'name' => 'required|string|max:255|regex:/^[\pL\s\d.,]+$/u',
+            'description' => 'required|string|regex:/^[\pL\s\d.,]+$/u',
         ];
     }
 
@@ -89,8 +89,10 @@ class UpdateJournalRequest extends FormRequest
             'name.required' => 'Kolom nilai karakter harus diisi',
             'description.required' => 'Kolom deskripsi harus diisi',
             'description.string' => 'Kolom deskripsi harus berupa string',
+            'description.regex' => "description hanya boleh berisi huruf, spasi, angka, titik dan koma",
             'name.string' => 'Kolom description harus berupa string',
-            'name.max' => 'unit pekerjaan maksimal 255 karakter'
+            'name.max' => 'unit pekerjaan maksimal 255 karakter',
+            'name.regex' => "Nama hanya boleh berisi huruf, spasi, angka, titik dan koma"
         ];
     }
 }

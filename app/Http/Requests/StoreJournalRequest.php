@@ -65,8 +65,8 @@ class StoreJournalRequest extends FormRequest
                     }
                 },
             ],
-            'name' => 'required|string|max:255',
-            'description' => 'required|string',
+            'name' => 'required|string|max:255|regex:/^[\pL\s\d.,]+$/u',
+            'description' => 'required|string|regex:/^[\pL\s\d.,]+$/u',
         ];
     }
 
@@ -78,8 +78,10 @@ class StoreJournalRequest extends FormRequest
             'name.required' => 'Kolom nilai karakter harus diisi.',
             'name.string' => 'Kolom nilai karakter harus berupa string.',
             'name.max' => 'Panjang Unit pekerjaan maksimal 255 karakter',
+            'name.regex' => "Nama hanya boleh berisi huruf, spasi, angka, titik dan koma",
             'description.required' => 'Kolom deskripsi harus diisi.',
-            'description.string' => 'Kolom deskripsi harus berupa string.'
+            'description.string' => 'Kolom deskripsi harus berupa string.',
+            'description.regex' => "Deskripsi hanya boleh berisi huruf, spasi, angka, titik dan koma"
         ];
     }
 }
