@@ -106,7 +106,7 @@ class TeacherController extends Controller
     public function journal(Request $request)
     {
         $teachers = Teacher::where('users_id' , auth()->user()->id)->first();
-        $journals = Journal::where('teachers_id', $teachers->id)->get();
+        $journals = Journal::where('teachers_id', $teachers->id)->latest()->paginate(10);
         return response()->json([
             'status' => true,
             'message' => "Data jurnal berhasil diambil",
