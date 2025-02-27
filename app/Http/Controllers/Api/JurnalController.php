@@ -25,7 +25,7 @@ class JurnalController extends Controller
      */
     public function index(Request $request)
     {
-        $Journal = Journal::where('users_id', Auth::id())->latest()->paginate(10);
+        $Journal = Journal::where('users_id', Auth::id())->latest()->paginate(5);
         return response()->json([
             'status' => true,
             'message' => "data berhasil di ambil",
@@ -35,7 +35,7 @@ class JurnalController extends Controller
 
     public function monitoring(Request $request)
     {
-        $journals = Journal::latest()->paginate(10);
+        $journals = Journal::latest()->paginate(5);
         return response()->json([
             'status' => true,
             'message' => 'data jurnal berhasil di tampilkan',

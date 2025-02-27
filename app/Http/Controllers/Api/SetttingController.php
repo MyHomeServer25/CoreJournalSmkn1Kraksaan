@@ -7,6 +7,7 @@ use App\Models\Journal;
 use App\Models\Student;
 use App\Models\Teacher;
 use App\Models\StudentRequest;
+use Illuminate\Support\Facades\Log;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UpdateSettingRequest;
 use App\Http\Requests\ApprovalSettingRequest;
@@ -27,6 +28,46 @@ class SetttingController extends Controller
               'dudi' => $dudi,
             ]
         ], 200);
+    }
+
+    public function getStatus()
+    {
+        try {
+            // Ambil data student berdasarkan user yang sedang login
+            $student = Student::where('users_id', auth()->user()->id)->first();
+            // dd($student->id);
+
+            // Jika student tidak ditemukan, kirim response error
+            if (!$student) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Data Student tidak ditemukan',
+                ], 404);
+            }
+
+            // Debugging: Cetak student ID
+            Log::info('Student ID: ' . $student->id);
+
+            // Ambil data studentRequest berdasarkan student_id
+            $studentRequests = StudentRequest::where('student_id', $student->id)->get();
+            // dd($studentRequests);
+
+            // Debugging: Jika kosong, log pesan
+            if ($studentRequests->isEmpty()) {
+                Log::info('StudentRequest tidak ditemukan untuk student_id: ' . $student->id);
+            }
+
+            return response()->json([
+                'status' => true,
+                'message' => 'Data Berhasil Ditampilkan',
+                'studentRequests' => $studentRequests
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json([
+                'status' => false,
+                'message' => 'Terjadi kesalahan: ' . $e->getMessage(),
+            ], 500);
+        }
     }
 
     public function update(UpdateSettingRequest $request, Student $student, StudentRequest $StudentRequest)

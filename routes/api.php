@@ -49,6 +49,8 @@ Route::middleware(['auth:api', 'throttle:api', 'cors'])->group(function () {
 
         // Route show student by auth
         Route::get('/student_auth', [StudentController::class, 'getByUser'])->name('student.getByUser');
+
+        Route::get('/studentRequest', [SetttingController::class, 'getStatus'])->name('setting.getStatus');
     });
     
     
