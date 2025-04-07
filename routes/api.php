@@ -2,14 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Request;
-use App\Http\Controllers\api\DudiController;
-use App\Http\Controllers\api\JurnalController;
-use App\Http\Controllers\api\StudentController;
-use App\Http\Controllers\api\TeacherController;
-use App\Http\Controllers\api\SetttingController;
+use App\Http\Controllers\Api\DudiController;
+use App\Http\Controllers\Api\JurnalController;
+use App\Http\Controllers\Api\StudentController;
+use App\Http\Controllers\Api\TeacherController;
+use App\Http\Controllers\Api\SetttingController;
 use App\Http\Controllers\Api\auth\LoginController;
-use App\Http\Controllers\api\auth\RegisterController;
-use App\Http\Controllers\Api\Auth\ResetPasswordController;
+use App\Http\Controllers\Api\auth\RegisterController;
+use App\Http\Controllers\Api\auth\ResetPasswordController;
 // use App\Http\Controllers\pi\JournalController;
 
 //test api
@@ -92,6 +92,6 @@ Route::middleware(['auth:api', 'throttle:api', 'cors'])->group(function () {
 
 Route::middleware(['cors'])->group(function () {
     Route::post('/forgot-password', [ResetPasswordController::class, 'resetPassword']);
-    Route::post('/logout', App\Http\Controllers\Api\Auth\LogoutController::class)->name('logout');
+    Route::post('/logout', App\Http\Controllers\Api\auth\LogoutController::class)->name('logout');
 });
 
