@@ -76,5 +76,13 @@
             @yield('content')
         </main>
     </div>
+    <script>
+        document.addEventListener('contextmenu', event => event.preventDefault());
+            document.addEventListener('keydown', function(e) {
+            if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) {
+                e.preventDefault();
+            }
+        });
+    </script>
 </body>
 </html>

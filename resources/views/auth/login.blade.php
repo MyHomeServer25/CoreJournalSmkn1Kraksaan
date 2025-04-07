@@ -22,7 +22,7 @@
     <link id="themeColors" rel="stylesheet" href="../../assets/dist/css/style.min.css" />
 </head>
 
-<body oncontextmenu="return false" onkeydown="return false">
+<body>
     <!-- Preloader -->
     <div class="preloader">
         <img src="{{ asset('smk.png') }}"
@@ -149,6 +149,15 @@
     <script src="../../assets/dist/js/sidebarmenu.js"></script>
 
     <script src="../../assets/dist/js/custom.js"></script>
+
+    <script>
+        document.addEventListener('contextmenu', event => event.preventDefault());
+            document.addEventListener('keydown', function(e) {
+            if (e.key === 'F12' || (e.ctrlKey && e.shiftKey && e.key === 'I')) {
+                e.preventDefault();
+            }
+        });
+    </script>
 </body>
 
 <!-- Mirrored from demos.adminmart.com/premium/bootstrap/modernize-bootstrap/package/html/main/authentication-login2.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 06 Jul 2023 02:01:04 GMT -->
