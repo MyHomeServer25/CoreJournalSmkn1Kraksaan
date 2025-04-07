@@ -35,7 +35,7 @@
     
 </head>
 
-<body>
+<body oncontextmenu="return false" onkeydown="return false">
     <!-- Preloader -->
     <div class="preloader">
         <img src="{{ asset('smk.png') }}"

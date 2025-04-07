@@ -46,10 +46,17 @@
             <td style="height: 30px; border: none;"></td>
             <td style="height: 30px; border: none;"></td>
         </tr>
+<<<<<<< HEAD
             <td style="text-align: left; border: none;">({{ str_repeat('..', strlen($teacherName)) }})</td>
             <td style="text-align: right; border: none;">({{ str_repeat('..', strlen($dudiName)) }})</td>
             {{-- <td style="text-align: left; border: none;">(..........)</td>
             <td style="text-align: right; border: none;">(............)</td> --}}
+=======
+            {{-- <td style="text-align: left; border: none;">({{ str_repeat('...', strlen($teacherName)) }})</td>
+            <td style="text-align: right; border: none;">({{ str_repeat('...', strlen($dudiName)) }})</td> --}}
+            <td style="text-align: left; border: none;">(...................)</td>
+            <td style="text-align: right; border: none;">(...................)</td>
+>>>>>>> 8a2e3658c4950e2ba676d340026bf3f5c9c25e8e
         </tr>
     </table>
     </body>
