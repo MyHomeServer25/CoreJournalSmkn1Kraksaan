@@ -22,7 +22,7 @@
     <link id="themeColors" rel="stylesheet" href="../../assets/dist/css/style.min.css" />
 </head>
 
-<body>
+<body oncontextmenu="return false" onkeydown="return false">
     <!-- Preloader -->
     <div class="preloader">
         <img src="{{ asset('smk.png') }}"
