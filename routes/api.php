@@ -29,7 +29,7 @@ Route::middleware(['cors'])->group(function () {
     Route::post('/login', LoginController::class)->name('login');
 });
 
-Route::middleware(['auth:api', 'throttle:5,1', 'cors'])->group(function () {
+Route::middleware(['auth:api', 'cors'])->group(function () {
     Route::group(['middleware' => ['role:student']], function() {
 
         // Route api jurnal
